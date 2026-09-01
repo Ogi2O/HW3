@@ -19,6 +19,9 @@ constexpr double kMinRotDeg = 0.1;
 constexpr int kMaxNoopRetries = 3;
 constexpr int kMaxLidarRetries = 3;
 constexpr int kMaxMovementRetries = 3;
+constexpr int kMaxGPSRetries = 3;
+// Maximum reasonable movement per step (cm) - used to detect impossible GPS changes
+constexpr double kMaxReasonableMoveCm = 500.0;
 
 // Clamp a (non-negative) rotation magnitude to the drone's per-step maximum.
 [[nodiscard, maybe_unused]] HorizontalAngle clampAngle(HorizontalAngle angle, HorizontalAngle max_angle) {
@@ -266,7 +269,61 @@ std::optional<types::LidarScanResult> DroneControlImpl::scanWithRetry(const Orie
     return std::nullopt; // All retries exhausted
 }
 
+// BONUS: Check if GPS coordinates changed impossibly (teleportation detection)
+bool DroneControlImpl::isImpossibleGPSChange(const Position3D& gps_pos,
+                                              const Position3D& expected) const {
+    const double dx = gps_pos.x.numerical_value_in(cm) - expected.x.numerical_value_in(cm);
+    const double dy = gps_pos.y.numerical_value_in(cm) - expected.y.numerical_value_in(cm);
+    const double dz = gps_pos.z.numerical_value_in(cm) - expected.z.numerical_value_in(cm);
+    const double dist = std::sqrt(dx * dx + dy * dy + dz * dz);
+    return dist > kMaxReasonableMoveCm;
+}
+
+// BONUS: Get validated GPS position with retry on impossible coordinates
+std::optional<Position3D> DroneControlImpl::getValidatedGPSPosition() {
+    for (int attempt = 0; attempt < kMaxGPSRetries; ++attempt) {
+        Position3D gps_pos = gps_.position();
+
+        // BONUS: Check if GPS returns out-of-bound coordinates
+        if (wouldExceedBounds(gps_pos)) {
+            // Compare with internal coordinates
+            if (internal_position_.has_value() && !wouldExceedBounds(*internal_position_)) {
+                // Internal is valid, GPS is OOB - ignore GPS, use internal
+                return internal_position_;
+            }
+            // Both are OOB - this is a real error, throw
+            throw std::runtime_error("GPS_OUT_OF_BOUNDS");
+        }
+
+        // BONUS: Check for impossible coordinate change after movement
+        if (internal_position_.has_value()) {
+            if (isImpossibleGPSChange(gps_pos, *internal_position_)) {
+                // Impossible change - retry GPS read
+                continue;
+            }
+        }
+
+        // GPS position is valid
+        return gps_pos;
+    }
+    // All retries exhausted - return error
+    return std::nullopt;
+}
+
 types::DroneStepResult DroneControlImpl::step() {
+    // BONUS: Validate GPS position with retry on impossible coordinates
+    auto validated_pos = getValidatedGPSPosition();
+    if (!validated_pos.has_value()) {
+        ++step_index_;
+        return types::DroneStepResult{types::DroneStepStatus::Error,
+            "GPS returned impossible coordinates after " + std::to_string(kMaxGPSRetries) + " retries"};
+    }
+
+    // Initialize internal position tracking on first step
+    if (!internal_position_.has_value()) {
+        internal_position_ = *validated_pos;
+    }
+
     const types::DroneState current = state();
     const types::LidarScanResult* latest = last_scan_.has_value() ? &last_scan_.value() : nullptr;
 
@@ -299,8 +356,14 @@ types::DroneStepResult DroneControlImpl::step() {
                     mv = amendToBounds(mv, current);
                 }
 
+                // Update internal position tracking before movement
+                Position3D expected_pos = computeTargetPosition(mv, current);
+
                 // BONUS: Execute with splitting if movement exceeds max
                 executeMovementWithSplit(mv);
+
+                // Update internal position after successful movement
+                internal_position_ = expected_pos;
             }
         }
 

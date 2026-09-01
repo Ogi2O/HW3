@@ -59,11 +59,11 @@ types::MissionRunResult MissionControlImpl::runMission() {
         ++steps;
 
         if (step.status == types::DroneStepStatus::Error) {
-            result.status = types::MissionRunStatus::Error;
+            // BONUS: Log the error and continue (don't break)
             const types::ErrorRef err{"DRONE_STEP_ERROR", step.message};
             logImmediately(err);
             result.errors.push_back(err);
-            break;
+            // Continue running - don't break on error
         }
         if (step.status == types::DroneStepStatus::Completed) {
             result.status = types::MissionRunStatus::Completed;
@@ -73,6 +73,11 @@ types::MissionRunResult MissionControlImpl::runMission() {
     }
 
     result.steps = steps;
+
+    // If there were errors during the run, mark status accordingly
+    if (!result.errors.empty() && result.status != types::MissionRunStatus::MaxSteps) {
+        result.status = types::MissionRunStatus::Error;
+    }
 
     // Persist the produced map (best effort; a failure is recorded, not thrown).
     try {

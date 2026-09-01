@@ -24,6 +24,8 @@ namespace mission_control_207637604_325750099 {
 // - Amends movements that would exceed mission bounds
 // - Retries LiDAR scans that return empty results
 // - Handles blocked movements with half-step retry
+// - Validates GPS coordinates against internal tracking
+// - Retries GPS reads on impossible coordinate changes
 class DroneControlImpl final : public mission_control::IDroneControl {
 public:
     DroneControlImpl(common::types::DroneConfigData drone,
@@ -59,6 +61,13 @@ private:
     [[nodiscard]] std::optional<common::types::LidarScanResult>
     scanWithRetry(const common::Orientation& orientation);
 
+    // BONUS: Get GPS position with validation and retry
+    [[nodiscard]] std::optional<common::Position3D> getValidatedGPSPosition();
+
+    // BONUS: Check if GPS coordinates are impossible (too far from expected)
+    [[nodiscard]] bool isImpossibleGPSChange(const common::Position3D& gps_pos,
+                                              const common::Position3D& expected) const;
+
     common::types::DroneConfigData drone_;
     common::types::MissionConfigData mission_;
     common::ILidar& lidar_;
@@ -69,6 +78,9 @@ private:
     common::types::LidarConfigData lidar_config_;
     std::optional<common::types::LidarScanResult> last_scan_;
     std::size_t step_index_ = 0;
+
+    // BONUS: Internal position tracking for GPS validation
+    std::optional<common::Position3D> internal_position_;
 };
 
 } // namespace mission_control_207637604_325750099
