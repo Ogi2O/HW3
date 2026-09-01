@@ -18,7 +18,6 @@ constexpr double kMinMoveCm = 0.5;
 constexpr double kMinRotDeg = 0.1;
 constexpr int kMaxNoopRetries = 3;
 constexpr int kMaxLidarRetries = 3;
-constexpr int kMaxMovementRetries = 3;
 constexpr int kMaxGPSRetries = 3;
 // Maximum reasonable movement per step (cm) - used to detect impossible GPS changes
 constexpr double kMaxReasonableMoveCm = 500.0;
@@ -212,20 +211,8 @@ void DroneControlImpl::executeMovementWithSplit(const types::MovementCommand& or
             const double max_adv = drone_.max_advance.numerical_value_in(cm);
             while (remaining > kMinMoveCm) {
                 const double step = std::min(remaining, max_adv);
-                if (!movement_.advance(step * cm)) {
-                    // Blocked - try half step once
-                    const double half = step / 2.0;
-                    if (half > kMinMoveCm) {
-                        if (!movement_.advance(half * cm)) {
-                            break; // Still blocked, stop
-                        }
-                        remaining -= half;
-                    } else {
-                        break;
-                    }
-                } else {
-                    remaining -= step;
-                }
+                movement_.advance(step * cm);  // throws on collision
+                remaining -= step;
             }
             break;
         }
@@ -236,19 +223,8 @@ void DroneControlImpl::executeMovementWithSplit(const types::MovementCommand& or
             remaining = std::abs(remaining);
             while (remaining > kMinMoveCm) {
                 const double step = std::min(remaining, max_elev);
-                if (!movement_.elevate(sign * step * cm)) {
-                    const double half = step / 2.0;
-                    if (half > kMinMoveCm) {
-                        if (!movement_.elevate(sign * half * cm)) {
-                            break;
-                        }
-                        remaining -= half;
-                    } else {
-                        break;
-                    }
-                } else {
-                    remaining -= step;
-                }
+                movement_.elevate(sign * step * cm);  // throws on collision
+                remaining -= step;
             }
             break;
         }
