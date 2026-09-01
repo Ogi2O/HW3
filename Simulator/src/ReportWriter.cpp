@@ -215,6 +215,9 @@ void ReportWriter::write(const types::SimulationManagerReport& report,
 }
 
 void ReportWriter::writeComparativeReport(const std::vector<ModeRunResult>& entries,
+                                          const std::vector<std::string>& failed_plugins,
+                                          const std::filesystem::path& composition_file,
+                                          const std::filesystem::path& mission_control_folder,
                                           const std::filesystem::path& output_path) {
     std::filesystem::create_directories(output_path);
 
@@ -235,40 +238,43 @@ void ReportWriter::writeComparativeReport(const std::vector<ModeRunResult>& entr
               [](const auto& a, const auto& b) { return a.second.size() > b.second.size(); });
 
     YAML::Node root;
+    root["comparative_report"]["composition_file"] = composition_file.filename().string();
+    root["comparative_report"]["mission_control_folder"] = mission_control_folder.string();
     root["comparative_report"]["generated_at_utc"] = nowUtcIso8601();
-    root["comparative_report"]["mission_controls"] = entries.size();
 
-    YAML::Node group_list;
+    YAML::Node results_summary;
     for (const auto& [sig, members] : groups) {
         (void)sig;
         YAML::Node group;
-        group["agree_count"] = members.size();
         YAML::Node names;
         for (const ModeRunResult* m : members) {
             names.push_back(m->plugin_name);
         }
         group["same_results"] = names;
         const auto [score, steps] = aggregate(*members.front());
-        group["representative_score"] = score;
-        group["representative_steps"] = steps;
-        const std::size_t errs = errorCount(*members.front());
-        if (errs > 0) {
-            group["error_runs"] = errs;
-            group["total_runs"] = members.front()->results.size();
-            const std::string err = firstError(*members.front());
-            if (!err.empty()) {
-                group["sample_error"] = err;
-            }
-        }
-        group_list.push_back(group);
+        group["total_score"] = static_cast<int>(score);
+        group["total_steps"] = steps;
+        results_summary.push_back(group);
     }
-    root["comparative_report"]["groups"] = group_list;
+    root["comparative_report"]["results_summary"] = results_summary;
+
+    // Add errors array for plugins that could not be loaded/run
+    if (!failed_plugins.empty()) {
+        YAML::Node errors;
+        for (const auto& name : failed_plugins) {
+            errors.push_back(name);
+        }
+        root["comparative_report"]["errors"] = errors;
+    }
 
     std::ofstream out(output_path / "comparative_results.yaml", std::ios::trunc);
     out << root;
 }
 
 void ReportWriter::writeCompetitiveReport(const std::vector<ModeRunResult>& entries,
+                                          const std::vector<std::string>& failed_plugins,
+                                          const std::filesystem::path& composition_file,
+                                          const std::filesystem::path& mission_control,
                                           const std::filesystem::path& output_path) {
     std::filesystem::create_directories(output_path);
 
@@ -276,15 +282,12 @@ void ReportWriter::writeCompetitiveReport(const std::vector<ModeRunResult>& entr
         std::string name;
         double score;
         std::size_t steps;
-        std::size_t errors;
-        std::size_t total;
-        std::string sample_error;
     };
     std::vector<Ranked> ranked;
     ranked.reserve(entries.size());
     for (const auto& e : entries) {
         const auto [score, steps] = aggregate(e);
-        ranked.push_back({e.plugin_name, score, steps, errorCount(e), e.results.size(), firstError(e)});
+        ranked.push_back({e.plugin_name, score, steps});
     }
     // Score descending, then steps ascending.
     std::sort(ranked.begin(), ranked.end(), [](const Ranked& a, const Ranked& b) {
@@ -293,27 +296,28 @@ void ReportWriter::writeCompetitiveReport(const std::vector<ModeRunResult>& entr
     });
 
     YAML::Node root;
+    root["competitive_report"]["composition_file"] = composition_file.filename().string();
+    root["competitive_report"]["mission_control"] = mission_control.filename().string();
     root["competitive_report"]["generated_at_utc"] = nowUtcIso8601();
-    root["competitive_report"]["algorithms"] = entries.size();
 
-    YAML::Node rankings;
-    std::size_t rank = 1;
+    YAML::Node results_summary;
     for (const Ranked& r : ranked) {
         YAML::Node node;
-        node["rank"] = rank++;
         node["algorithm"] = r.name;
-        node["score"] = r.score;
-        node["steps"] = r.steps;
-        if (r.errors > 0) {
-            node["error_runs"] = r.errors;
-            node["total_runs"] = r.total;
-            if (!r.sample_error.empty()) {
-                node["sample_error"] = r.sample_error;
-            }
-        }
-        rankings.push_back(node);
+        node["total_score"] = static_cast<int>(r.score);
+        node["total_steps"] = r.steps;
+        results_summary.push_back(node);
     }
-    root["competitive_report"]["rankings"] = rankings;
+    root["competitive_report"]["results_summary"] = results_summary;
+
+    // Add errors array for plugins that could not be loaded/run
+    if (!failed_plugins.empty()) {
+        YAML::Node errors;
+        for (const auto& name : failed_plugins) {
+            errors.push_back(name);
+        }
+        root["competitive_report"]["errors"] = errors;
+    }
 
     std::ofstream out(output_path / "competition_results.yaml", std::ios::trunc);
     out << root;

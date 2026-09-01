@@ -30,11 +30,17 @@ public:
     // results under `same_results`, groups sorted by how many agree (desc).
     // Written to output_path/comparative_results.yaml.
     static void writeComparativeReport(const std::vector<ModeRunResult>& entries,
+                                       const std::vector<std::string>& failed_plugins,
+                                       const std::filesystem::path& composition_file,
+                                       const std::filesystem::path& mission_control_folder,
                                        const std::filesystem::path& output_path);
 
     // Competitive report: algorithms ranked by score (desc) then steps (asc).
     // Written to output_path/competition_results.yaml.
     static void writeCompetitiveReport(const std::vector<ModeRunResult>& entries,
+                                       const std::vector<std::string>& failed_plugins,
+                                       const std::filesystem::path& composition_file,
+                                       const std::filesystem::path& mission_control,
                                        const std::filesystem::path& output_path);
 };
 

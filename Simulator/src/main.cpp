@@ -245,11 +245,13 @@ int runComparative(const Options& opts, simulator::PluginLoader& loader) {
     fs::create_directories(out_dir);
 
     std::vector<Pairing> pairings;
+    std::vector<std::string> failed_plugins;
     for (const fs::path& mc_so : listSharedObjects(opts.mission_control_folder)) {
         auto mission_control = loader.loadMissionControl(mc_so);
         if (!mission_control) {
             std::cerr << "skipping mission control " << mc_so.filename() << ": "
                       << loader.lastError() << "\n";
+            failed_plugins.push_back(mc_so.filename().string());
             continue;
         }
         pairings.push_back(Pairing{mc_so.filename().string(),
@@ -258,7 +260,8 @@ int runComparative(const Options& opts, simulator::PluginLoader& loader) {
     }
 
     auto entries = runMatrix(pairings, compositions, out_dir, opts.num_threads);
-    simulator::ReportWriter::writeComparativeReport(entries, out_dir);
+    simulator::ReportWriter::writeComparativeReport(entries, failed_plugins,
+                                                    opts.simulation, opts.mission_control_folder, out_dir);
     std::cout << "comparative results written to " << out_dir << "\n";
     return 0;
 }
@@ -274,11 +277,13 @@ int runCompetitive(const Options& opts, simulator::PluginLoader& loader) {
     fs::create_directories(out_dir);
 
     std::vector<Pairing> pairings;
+    std::vector<std::string> failed_plugins;
     for (const fs::path& algo_so : listSharedObjects(opts.algorithms_folder)) {
         auto algorithm = loader.loadAlgorithm(algo_so);
         if (!algorithm) {
             std::cerr << "skipping algorithm " << algo_so.filename() << ": "
                       << loader.lastError() << "\n";
+            failed_plugins.push_back(algo_so.filename().string());
             continue;
         }
         pairings.push_back(Pairing{algo_so.filename().string(),
@@ -287,7 +292,8 @@ int runCompetitive(const Options& opts, simulator::PluginLoader& loader) {
     }
 
     auto entries = runMatrix(pairings, compositions, out_dir, opts.num_threads);
-    simulator::ReportWriter::writeCompetitiveReport(entries, out_dir);
+    simulator::ReportWriter::writeCompetitiveReport(entries, failed_plugins,
+                                                    opts.simulation, opts.mission_control, out_dir);
     std::cout << "competition results written to " << out_dir << "\n";
     return 0;
 }
