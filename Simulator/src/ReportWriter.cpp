@@ -89,7 +89,7 @@ namespace {
 
 // The first error (code: message) across a plugin's runs, if any. Surfaced in
 // the report so a batch of failing runs explains itself.
-[[nodiscard]] std::string firstError(const ReportWriter::ModeRunResult& e) {
+[[nodiscard, maybe_unused]] std::string firstError(const ReportWriter::ModeRunResult& e) {
     for (const auto& r : e.results) {
         for (const auto& mr : r.mission_results) {
             for (const auto& err : mr.errors) {
@@ -101,7 +101,7 @@ namespace {
 }
 
 // How many of a plugin's runs failed (scored -1).
-[[nodiscard]] std::size_t errorCount(const ReportWriter::ModeRunResult& e) {
+[[nodiscard, maybe_unused]] std::size_t errorCount(const ReportWriter::ModeRunResult& e) {
     std::size_t n = 0;
     for (const auto& r : e.results) {
         if (isErrorRun(r)) {

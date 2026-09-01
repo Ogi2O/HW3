@@ -21,7 +21,7 @@ constexpr int kMaxLidarRetries = 3;
 constexpr int kMaxMovementRetries = 3;
 
 // Clamp a (non-negative) rotation magnitude to the drone's per-step maximum.
-[[nodiscard]] HorizontalAngle clampAngle(HorizontalAngle angle, HorizontalAngle max_angle) {
+[[nodiscard, maybe_unused]] HorizontalAngle clampAngle(HorizontalAngle angle, HorizontalAngle max_angle) {
     double v = angle.numerical_value_in(deg);
     const double mx = max_angle.numerical_value_in(deg);
     if (v < 0.0) v = 0.0;
@@ -30,7 +30,7 @@ constexpr int kMaxMovementRetries = 3;
 }
 
 // Clamp a (non-negative) advance distance to the drone's per-step maximum.
-[[nodiscard]] PhysicalLength clampAdvance(PhysicalLength distance, PhysicalLength max_distance) {
+[[nodiscard, maybe_unused]] PhysicalLength clampAdvance(PhysicalLength distance, PhysicalLength max_distance) {
     double v = distance.numerical_value_in(cm);
     const double mx = max_distance.numerical_value_in(cm);
     if (v < 0.0) v = 0.0;
@@ -39,7 +39,7 @@ constexpr int kMaxMovementRetries = 3;
 }
 
 // Clamp a signed elevation change (can be negative) to +/- the drone's maximum.
-[[nodiscard]] PhysicalLength clampElevate(PhysicalLength distance, PhysicalLength max_distance) {
+[[nodiscard, maybe_unused]] PhysicalLength clampElevate(PhysicalLength distance, PhysicalLength max_distance) {
     double v = distance.numerical_value_in(cm);
     const double mx = max_distance.numerical_value_in(cm);
     if (v > mx) v = mx;
@@ -101,7 +101,7 @@ bool DroneControlImpl::wouldExceedBounds(const Position3D& target) const {
     const double y = target.y.numerical_value_in(cm);
     const double z = target.z.numerical_value_in(cm);
 
-    const auto& b = mission_.boundaries;
+    const auto& b = mission_.mission_bounds;
     return x < b.min_x.numerical_value_in(cm) || x > b.max_x.numerical_value_in(cm) ||
            y < b.min_y.numerical_value_in(cm) || y > b.max_y.numerical_value_in(cm) ||
            z < b.min_height.numerical_value_in(cm) || z > b.max_height.numerical_value_in(cm);
@@ -143,7 +143,7 @@ types::MovementCommand DroneControlImpl::amendToBounds(types::MovementCommand cm
     const double cx = current.position.x.numerical_value_in(cm);
     const double cy = current.position.y.numerical_value_in(cm);
     const double cz = current.position.z.numerical_value_in(cm);
-    const auto& b = mission_.boundaries;
+    const auto& b = mission_.mission_bounds;
 
     if (cmd.type == types::MovementCommandType::Advance) {
         const double heading_rad = current.heading.horizontal.numerical_value_in(deg) * (3.14159265358979323846 / 180.0);
@@ -258,7 +258,7 @@ void DroneControlImpl::executeMovementWithSplit(const types::MovementCommand& or
 std::optional<types::LidarScanResult> DroneControlImpl::scanWithRetry(const Orientation& orientation) {
     for (int attempt = 0; attempt < kMaxLidarRetries; ++attempt) {
         types::LidarScanResult scan = lidar_.scan(orientation);
-        if (!scan.points.empty()) {
+        if (!scan.empty()) {
             return scan;
         }
         // Empty result - retry

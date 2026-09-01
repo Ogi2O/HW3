@@ -1,0 +1,78 @@
+Package: vcpkg-cmake-config
+Version: 2024-05-23
+Architecture: x64-linux
+Multi-Arch: same
+Abi: 938b5e1dc7ceacf08654bef246055524d658786b56f39c96f3b23d2de8d063d3
+Status: install ok installed
+
+Package: vcpkg-cmake
+Version: 2024-04-23
+Architecture: x64-linux
+Multi-Arch: same
+Abi: f7cbaf4a1eecbbb1579be1e8dbbd016626910498335b8370236a4219615937b6
+Status: install ok installed
+
+Package: gtest
+Version: 1.17.0
+Port-Version: 2
+Depends: vcpkg-cmake, vcpkg-cmake-config
+Architecture: x64-linux
+Multi-Arch: same
+Abi: 4cc21124af27493ac1787e1dc10c3210a797392776b8c63de971fa570703f0b9
+Description: Google Testing and Mocking Framework
+Status: install ok installed
+
+Package: gsl-lite
+Version: 1.0.1
+Depends: vcpkg-cmake, vcpkg-cmake-config
+Architecture: x64-linux
+Multi-Arch: same
+Abi: 12fca5d921c3c1a8fe1c138228037c0c4001e9b1b1e1b68d38d36e7eaa74bfc2
+Description: ISO C++ Core Guidelines Library implementation for C++98, C++11 up
+Status: install ok installed
+
+Package: fmt
+Version: 12.1.0
+Depends: vcpkg-cmake, vcpkg-cmake-config
+Architecture: x64-linux
+Multi-Arch: same
+Abi: e19e0e090d40221e10cca54b0bfb3229a360f288764d3d2e890ed961c0d29eff
+Description: {fmt} is an open-source formatting library providing a fast and safe alternative to C stdio and C++ iostreams.
+Status: install ok installed
+
+Package: mp-units
+Version: 2.5.0
+Depends: fmt, gsl-lite, vcpkg-cmake, vcpkg-cmake-config
+Architecture: x64-linux
+Multi-Arch: same
+Abi: e7c8b07b026a58fef6f61a818e37b3f799d31e6047ab77426673db55170610bf
+Description: The quantities and units library for C++
+Status: install ok installed
+
+Package: zlib
+Version: 1.3.1
+Depends: vcpkg-cmake
+Architecture: x64-linux
+Multi-Arch: same
+Abi: 9108104ef4a02f3fbd786121dd6f8a2e8972f736c1e4c47c93a27c328e09356d
+Description: A compression library
+Status: install ok installed
+
+Package: tinynpy
+Version: 1.1
+Depends: vcpkg-cmake, vcpkg-cmake-config, zlib
+Architecture: x64-linux
+Multi-Arch: same
+Abi: 5674c1f7dfaa58cf49405e38cf99847c3e0c9054c28002cef368911ddb8775bb
+Description: tiny C++ loader/exporter of python numpy array NPY/NPZ files
+Status: install ok installed
+
+Package: yaml-cpp
+Version: 0.9.0
+Depends: vcpkg-cmake, vcpkg-cmake-config
+Architecture: x64-linux
+Multi-Arch: same
+Abi: efdb5f5d457b5ee237ada67299ca644dce54a13cb9d0cf5f5f9162cb4240b1db
+Description: yaml-cpp is a YAML parser and emitter in C++ matching the YAML 1.2 spec.
+Status: install ok installed
+

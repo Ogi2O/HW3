@@ -1,0 +1,15 @@
+x64-linux/
+x64-linux/include/
+x64-linux/include/gsl-lite/
+x64-linux/include/gsl-lite/gsl-lite.hpp
+x64-linux/include/gsl/
+x64-linux/include/gsl/gsl-lite.hpp
+x64-linux/share/
+x64-linux/share/gsl-lite/
+x64-linux/share/gsl-lite/copyright
+x64-linux/share/gsl-lite/gsl-liteConfig.cmake
+x64-linux/share/gsl-lite/gsl-liteConfigVersion.cmake
+x64-linux/share/gsl-lite/gsl-liteTargets.cmake
+x64-linux/share/gsl-lite/usage
+x64-linux/share/gsl-lite/vcpkg.spdx.json
+x64-linux/share/gsl-lite/vcpkg_abi_info.txt
