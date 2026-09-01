@@ -1,0 +1,8 @@
+competitive_report:
+  composition_file: sim_compose.yaml
+  mission_control: MissionControl_207637604_325750099.so
+  generated_at_utc: 2026-09-01T12:15:09Z
+  results_summary:
+    - algorithm: Algorithm_207637604_325750099.so
+      total_score: 47
+      total_steps: 101885

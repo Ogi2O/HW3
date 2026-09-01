@@ -1,0 +1,9 @@
+comparative_report:
+  composition_file: sim_compose.yaml
+  mission_control_folder: build/default/MissionControl
+  generated_at_utc: 2026-09-01T12:14:39Z
+  results_summary:
+    - same_results:
+        - MissionControl_207637604_325750099.so
+      total_score: 47
+      total_steps: 101885

@@ -1,0 +1,17 @@
+x64-linux/
+x64-linux/debug/
+x64-linux/debug/lib/
+x64-linux/debug/lib/libTinyNPY.a
+x64-linux/include/
+x64-linux/include/TinyNPY.h
+x64-linux/lib/
+x64-linux/lib/libTinyNPY.a
+x64-linux/share/
+x64-linux/share/tinynpy/
+x64-linux/share/tinynpy/TinyNPYConfig.cmake
+x64-linux/share/tinynpy/TinyNPYTargets-debug.cmake
+x64-linux/share/tinynpy/TinyNPYTargets-release.cmake
+x64-linux/share/tinynpy/TinyNPYTargets.cmake
+x64-linux/share/tinynpy/copyright
+x64-linux/share/tinynpy/vcpkg.spdx.json
+x64-linux/share/tinynpy/vcpkg_abi_info.txt

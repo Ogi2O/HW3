@@ -1,0 +1,116 @@
+[
+{
+  "directory": "/workspaces/HW3/build/default",
+  "command": "/usr/bin/c++ -DAlgorithm_207637604_325750099_EXPORTS -DMP_UNITS_API_CONTRACTS=2 -DMP_UNITS_API_NATURAL_UNITS=1 -DMP_UNITS_API_NO_CRTP=0 -DMP_UNITS_API_STD_FORMAT=0 -DMP_UNITS_API_THROWING_CONSTRAINTS=0 -DMP_UNITS_HOSTED=1 -I/workspaces/HW3/Algorithm/include -I/workspaces/HW3/common/include -isystem /workspaces/HW3/build/default/vcpkg_installed/x64-linux/include -O3 -DNDEBUG -std=gnu++20 -fPIC -fvisibility=default -Wall -Wextra -Werror -pedantic -o Algorithm/CMakeFiles/Algorithm_207637604_325750099.dir/src/MappingAlgorithmImpl.cpp.o -c /workspaces/HW3/Algorithm/src/MappingAlgorithmImpl.cpp",
+  "file": "/workspaces/HW3/Algorithm/src/MappingAlgorithmImpl.cpp",
+  "output": "Algorithm/CMakeFiles/Algorithm_207637604_325750099.dir/src/MappingAlgorithmImpl.cpp.o"
+},
+{
+  "directory": "/workspaces/HW3/build/default",
+  "command": "/usr/bin/c++ -DMP_UNITS_API_CONTRACTS=2 -DMP_UNITS_API_NATURAL_UNITS=1 -DMP_UNITS_API_NO_CRTP=0 -DMP_UNITS_API_STD_FORMAT=0 -DMP_UNITS_API_THROWING_CONSTRAINTS=0 -DMP_UNITS_HOSTED=1 -DMissionControl_207637604_325750099_EXPORTS -I/workspaces/HW3/MissionControl/include -I/workspaces/HW3/MissionControl/common_mission_control/include -I/workspaces/HW3/common/include -isystem /workspaces/HW3/build/default/vcpkg_installed/x64-linux/include -O3 -DNDEBUG -std=gnu++20 -fPIC -fvisibility=default -Wall -Wextra -Werror -pedantic -o MissionControl/CMakeFiles/MissionControl_207637604_325750099.dir/src/ScanResultToVoxels.cpp.o -c /workspaces/HW3/MissionControl/src/ScanResultToVoxels.cpp",
+  "file": "/workspaces/HW3/MissionControl/src/ScanResultToVoxels.cpp",
+  "output": "MissionControl/CMakeFiles/MissionControl_207637604_325750099.dir/src/ScanResultToVoxels.cpp.o"
+},
+{
+  "directory": "/workspaces/HW3/build/default",
+  "command": "/usr/bin/c++ -DMP_UNITS_API_CONTRACTS=2 -DMP_UNITS_API_NATURAL_UNITS=1 -DMP_UNITS_API_NO_CRTP=0 -DMP_UNITS_API_STD_FORMAT=0 -DMP_UNITS_API_THROWING_CONSTRAINTS=0 -DMP_UNITS_HOSTED=1 -DMissionControl_207637604_325750099_EXPORTS -I/workspaces/HW3/MissionControl/include -I/workspaces/HW3/MissionControl/common_mission_control/include -I/workspaces/HW3/common/include -isystem /workspaces/HW3/build/default/vcpkg_installed/x64-linux/include -O3 -DNDEBUG -std=gnu++20 -fPIC -fvisibility=default -Wall -Wextra -Werror -pedantic -o MissionControl/CMakeFiles/MissionControl_207637604_325750099.dir/src/DroneControlImpl.cpp.o -c /workspaces/HW3/MissionControl/src/DroneControlImpl.cpp",
+  "file": "/workspaces/HW3/MissionControl/src/DroneControlImpl.cpp",
+  "output": "MissionControl/CMakeFiles/MissionControl_207637604_325750099.dir/src/DroneControlImpl.cpp.o"
+},
+{
+  "directory": "/workspaces/HW3/build/default",
+  "command": "/usr/bin/c++ -DMP_UNITS_API_CONTRACTS=2 -DMP_UNITS_API_NATURAL_UNITS=1 -DMP_UNITS_API_NO_CRTP=0 -DMP_UNITS_API_STD_FORMAT=0 -DMP_UNITS_API_THROWING_CONSTRAINTS=0 -DMP_UNITS_HOSTED=1 -DMissionControl_207637604_325750099_EXPORTS -I/workspaces/HW3/MissionControl/include -I/workspaces/HW3/MissionControl/common_mission_control/include -I/workspaces/HW3/common/include -isystem /workspaces/HW3/build/default/vcpkg_installed/x64-linux/include -O3 -DNDEBUG -std=gnu++20 -fPIC -fvisibility=default -Wall -Wextra -Werror -pedantic -o MissionControl/CMakeFiles/MissionControl_207637604_325750099.dir/src/MissionControlImpl.cpp.o -c /workspaces/HW3/MissionControl/src/MissionControlImpl.cpp",
+  "file": "/workspaces/HW3/MissionControl/src/MissionControlImpl.cpp",
+  "output": "MissionControl/CMakeFiles/MissionControl_207637604_325750099.dir/src/MissionControlImpl.cpp.o"
+},
+{
+  "directory": "/workspaces/HW3/build/default",
+  "command": "/usr/bin/c++ -DMP_UNITS_API_CONTRACTS=2 -DMP_UNITS_API_NATURAL_UNITS=1 -DMP_UNITS_API_NO_CRTP=0 -DMP_UNITS_API_STD_FORMAT=0 -DMP_UNITS_API_THROWING_CONSTRAINTS=0 -DMP_UNITS_HOSTED=1 -DYAML_CPP_STATIC_DEFINE -Dsimulator_207637604_325750099_EXPORTS -I/workspaces/HW3/Simulator/include -I/workspaces/HW3/Simulator/common_simulator/include -I/workspaces/HW3/common/include -I/workspaces/HW3/UserCommon/include -isystem /workspaces/HW3/build/default/vcpkg_installed/x64-linux/include -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Werror -pedantic -o Simulator/CMakeFiles/simulator_207637604_325750099.dir/src/Map3DImpl.cpp.o -c /workspaces/HW3/Simulator/src/Map3DImpl.cpp",
+  "file": "/workspaces/HW3/Simulator/src/Map3DImpl.cpp",
+  "output": "Simulator/CMakeFiles/simulator_207637604_325750099.dir/src/Map3DImpl.cpp.o"
+},
+{
+  "directory": "/workspaces/HW3/build/default",
+  "command": "/usr/bin/c++ -DMP_UNITS_API_CONTRACTS=2 -DMP_UNITS_API_NATURAL_UNITS=1 -DMP_UNITS_API_NO_CRTP=0 -DMP_UNITS_API_STD_FORMAT=0 -DMP_UNITS_API_THROWING_CONSTRAINTS=0 -DMP_UNITS_HOSTED=1 -DYAML_CPP_STATIC_DEFINE -Dsimulator_207637604_325750099_EXPORTS -I/workspaces/HW3/Simulator/include -I/workspaces/HW3/Simulator/common_simulator/include -I/workspaces/HW3/common/include -I/workspaces/HW3/UserCommon/include -isystem /workspaces/HW3/build/default/vcpkg_installed/x64-linux/include -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Werror -pedantic -o Simulator/CMakeFiles/simulator_207637604_325750099.dir/src/MockGPS.cpp.o -c /workspaces/HW3/Simulator/src/MockGPS.cpp",
+  "file": "/workspaces/HW3/Simulator/src/MockGPS.cpp",
+  "output": "Simulator/CMakeFiles/simulator_207637604_325750099.dir/src/MockGPS.cpp.o"
+},
+{
+  "directory": "/workspaces/HW3/build/default",
+  "command": "/usr/bin/c++ -DMP_UNITS_API_CONTRACTS=2 -DMP_UNITS_API_NATURAL_UNITS=1 -DMP_UNITS_API_NO_CRTP=0 -DMP_UNITS_API_STD_FORMAT=0 -DMP_UNITS_API_THROWING_CONSTRAINTS=0 -DMP_UNITS_HOSTED=1 -DYAML_CPP_STATIC_DEFINE -Dsimulator_207637604_325750099_EXPORTS -I/workspaces/HW3/Simulator/include -I/workspaces/HW3/Simulator/common_simulator/include -I/workspaces/HW3/common/include -I/workspaces/HW3/UserCommon/include -isystem /workspaces/HW3/build/default/vcpkg_installed/x64-linux/include -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Werror -pedantic -o Simulator/CMakeFiles/simulator_207637604_325750099.dir/src/MockLidar.cpp.o -c /workspaces/HW3/Simulator/src/MockLidar.cpp",
+  "file": "/workspaces/HW3/Simulator/src/MockLidar.cpp",
+  "output": "Simulator/CMakeFiles/simulator_207637604_325750099.dir/src/MockLidar.cpp.o"
+},
+{
+  "directory": "/workspaces/HW3/build/default",
+  "command": "/usr/bin/c++ -DMP_UNITS_API_CONTRACTS=2 -DMP_UNITS_API_NATURAL_UNITS=1 -DMP_UNITS_API_NO_CRTP=0 -DMP_UNITS_API_STD_FORMAT=0 -DMP_UNITS_API_THROWING_CONSTRAINTS=0 -DMP_UNITS_HOSTED=1 -DYAML_CPP_STATIC_DEFINE -Dsimulator_207637604_325750099_EXPORTS -I/workspaces/HW3/Simulator/include -I/workspaces/HW3/Simulator/common_simulator/include -I/workspaces/HW3/common/include -I/workspaces/HW3/UserCommon/include -isystem /workspaces/HW3/build/default/vcpkg_installed/x64-linux/include -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Werror -pedantic -o Simulator/CMakeFiles/simulator_207637604_325750099.dir/src/MockMovement.cpp.o -c /workspaces/HW3/Simulator/src/MockMovement.cpp",
+  "file": "/workspaces/HW3/Simulator/src/MockMovement.cpp",
+  "output": "Simulator/CMakeFiles/simulator_207637604_325750099.dir/src/MockMovement.cpp.o"
+},
+{
+  "directory": "/workspaces/HW3/build/default",
+  "command": "/usr/bin/c++ -DMP_UNITS_API_CONTRACTS=2 -DMP_UNITS_API_NATURAL_UNITS=1 -DMP_UNITS_API_NO_CRTP=0 -DMP_UNITS_API_STD_FORMAT=0 -DMP_UNITS_API_THROWING_CONSTRAINTS=0 -DMP_UNITS_HOSTED=1 -DYAML_CPP_STATIC_DEFINE -Dsimulator_207637604_325750099_EXPORTS -I/workspaces/HW3/Simulator/include -I/workspaces/HW3/Simulator/common_simulator/include -I/workspaces/HW3/common/include -I/workspaces/HW3/UserCommon/include -isystem /workspaces/HW3/build/default/vcpkg_installed/x64-linux/include -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Werror -pedantic -o Simulator/CMakeFiles/simulator_207637604_325750099.dir/src/MapsComparison.cpp.o -c /workspaces/HW3/Simulator/src/MapsComparison.cpp",
+  "file": "/workspaces/HW3/Simulator/src/MapsComparison.cpp",
+  "output": "Simulator/CMakeFiles/simulator_207637604_325750099.dir/src/MapsComparison.cpp.o"
+},
+{
+  "directory": "/workspaces/HW3/build/default",
+  "command": "/usr/bin/c++ -DMP_UNITS_API_CONTRACTS=2 -DMP_UNITS_API_NATURAL_UNITS=1 -DMP_UNITS_API_NO_CRTP=0 -DMP_UNITS_API_STD_FORMAT=0 -DMP_UNITS_API_THROWING_CONSTRAINTS=0 -DMP_UNITS_HOSTED=1 -DYAML_CPP_STATIC_DEFINE -Dsimulator_207637604_325750099_EXPORTS -I/workspaces/HW3/Simulator/include -I/workspaces/HW3/Simulator/common_simulator/include -I/workspaces/HW3/common/include -I/workspaces/HW3/UserCommon/include -isystem /workspaces/HW3/build/default/vcpkg_installed/x64-linux/include -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Werror -pedantic -o Simulator/CMakeFiles/simulator_207637604_325750099.dir/src/SimulationManager.cpp.o -c /workspaces/HW3/Simulator/src/SimulationManager.cpp",
+  "file": "/workspaces/HW3/Simulator/src/SimulationManager.cpp",
+  "output": "Simulator/CMakeFiles/simulator_207637604_325750099.dir/src/SimulationManager.cpp.o"
+},
+{
+  "directory": "/workspaces/HW3/build/default",
+  "command": "/usr/bin/c++ -DMP_UNITS_API_CONTRACTS=2 -DMP_UNITS_API_NATURAL_UNITS=1 -DMP_UNITS_API_NO_CRTP=0 -DMP_UNITS_API_STD_FORMAT=0 -DMP_UNITS_API_THROWING_CONSTRAINTS=0 -DMP_UNITS_HOSTED=1 -DYAML_CPP_STATIC_DEFINE -Dsimulator_207637604_325750099_EXPORTS -I/workspaces/HW3/Simulator/include -I/workspaces/HW3/Simulator/common_simulator/include -I/workspaces/HW3/common/include -I/workspaces/HW3/UserCommon/include -isystem /workspaces/HW3/build/default/vcpkg_installed/x64-linux/include -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Werror -pedantic -o Simulator/CMakeFiles/simulator_207637604_325750099.dir/src/SimulationRunImpl.cpp.o -c /workspaces/HW3/Simulator/src/SimulationRunImpl.cpp",
+  "file": "/workspaces/HW3/Simulator/src/SimulationRunImpl.cpp",
+  "output": "Simulator/CMakeFiles/simulator_207637604_325750099.dir/src/SimulationRunImpl.cpp.o"
+},
+{
+  "directory": "/workspaces/HW3/build/default",
+  "command": "/usr/bin/c++ -DMP_UNITS_API_CONTRACTS=2 -DMP_UNITS_API_NATURAL_UNITS=1 -DMP_UNITS_API_NO_CRTP=0 -DMP_UNITS_API_STD_FORMAT=0 -DMP_UNITS_API_THROWING_CONSTRAINTS=0 -DMP_UNITS_HOSTED=1 -DYAML_CPP_STATIC_DEFINE -Dsimulator_207637604_325750099_EXPORTS -I/workspaces/HW3/Simulator/include -I/workspaces/HW3/Simulator/common_simulator/include -I/workspaces/HW3/common/include -I/workspaces/HW3/UserCommon/include -isystem /workspaces/HW3/build/default/vcpkg_installed/x64-linux/include -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Werror -pedantic -o Simulator/CMakeFiles/simulator_207637604_325750099.dir/src/SimulationRunFactoryImpl.cpp.o -c /workspaces/HW3/Simulator/src/SimulationRunFactoryImpl.cpp",
+  "file": "/workspaces/HW3/Simulator/src/SimulationRunFactoryImpl.cpp",
+  "output": "Simulator/CMakeFiles/simulator_207637604_325750099.dir/src/SimulationRunFactoryImpl.cpp.o"
+},
+{
+  "directory": "/workspaces/HW3/build/default",
+  "command": "/usr/bin/c++ -DMP_UNITS_API_CONTRACTS=2 -DMP_UNITS_API_NATURAL_UNITS=1 -DMP_UNITS_API_NO_CRTP=0 -DMP_UNITS_API_STD_FORMAT=0 -DMP_UNITS_API_THROWING_CONSTRAINTS=0 -DMP_UNITS_HOSTED=1 -DYAML_CPP_STATIC_DEFINE -Dsimulator_207637604_325750099_EXPORTS -I/workspaces/HW3/Simulator/include -I/workspaces/HW3/Simulator/common_simulator/include -I/workspaces/HW3/common/include -I/workspaces/HW3/UserCommon/include -isystem /workspaces/HW3/build/default/vcpkg_installed/x64-linux/include -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Werror -pedantic -o Simulator/CMakeFiles/simulator_207637604_325750099.dir/src/ConfigLoader.cpp.o -c /workspaces/HW3/Simulator/src/ConfigLoader.cpp",
+  "file": "/workspaces/HW3/Simulator/src/ConfigLoader.cpp",
+  "output": "Simulator/CMakeFiles/simulator_207637604_325750099.dir/src/ConfigLoader.cpp.o"
+},
+{
+  "directory": "/workspaces/HW3/build/default",
+  "command": "/usr/bin/c++ -DMP_UNITS_API_CONTRACTS=2 -DMP_UNITS_API_NATURAL_UNITS=1 -DMP_UNITS_API_NO_CRTP=0 -DMP_UNITS_API_STD_FORMAT=0 -DMP_UNITS_API_THROWING_CONSTRAINTS=0 -DMP_UNITS_HOSTED=1 -DYAML_CPP_STATIC_DEFINE -Dsimulator_207637604_325750099_EXPORTS -I/workspaces/HW3/Simulator/include -I/workspaces/HW3/Simulator/common_simulator/include -I/workspaces/HW3/common/include -I/workspaces/HW3/UserCommon/include -isystem /workspaces/HW3/build/default/vcpkg_installed/x64-linux/include -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Werror -pedantic -o Simulator/CMakeFiles/simulator_207637604_325750099.dir/src/ReportWriter.cpp.o -c /workspaces/HW3/Simulator/src/ReportWriter.cpp",
+  "file": "/workspaces/HW3/Simulator/src/ReportWriter.cpp",
+  "output": "Simulator/CMakeFiles/simulator_207637604_325750099.dir/src/ReportWriter.cpp.o"
+},
+{
+  "directory": "/workspaces/HW3/build/default",
+  "command": "/usr/bin/c++ -DMP_UNITS_API_CONTRACTS=2 -DMP_UNITS_API_NATURAL_UNITS=1 -DMP_UNITS_API_NO_CRTP=0 -DMP_UNITS_API_STD_FORMAT=0 -DMP_UNITS_API_THROWING_CONSTRAINTS=0 -DMP_UNITS_HOSTED=1 -DYAML_CPP_STATIC_DEFINE -Dsimulator_207637604_325750099_EXPORTS -I/workspaces/HW3/Simulator/include -I/workspaces/HW3/Simulator/common_simulator/include -I/workspaces/HW3/common/include -I/workspaces/HW3/UserCommon/include -isystem /workspaces/HW3/build/default/vcpkg_installed/x64-linux/include -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Werror -pedantic -o Simulator/CMakeFiles/simulator_207637604_325750099.dir/src/ParallelExecutor.cpp.o -c /workspaces/HW3/Simulator/src/ParallelExecutor.cpp",
+  "file": "/workspaces/HW3/Simulator/src/ParallelExecutor.cpp",
+  "output": "Simulator/CMakeFiles/simulator_207637604_325750099.dir/src/ParallelExecutor.cpp.o"
+},
+{
+  "directory": "/workspaces/HW3/build/default",
+  "command": "/usr/bin/c++ -DMP_UNITS_API_CONTRACTS=2 -DMP_UNITS_API_NATURAL_UNITS=1 -DMP_UNITS_API_NO_CRTP=0 -DMP_UNITS_API_STD_FORMAT=0 -DMP_UNITS_API_THROWING_CONSTRAINTS=0 -DMP_UNITS_HOSTED=1 -DYAML_CPP_STATIC_DEFINE -Dsimulator_207637604_325750099_EXPORTS -I/workspaces/HW3/Simulator/include -I/workspaces/HW3/Simulator/common_simulator/include -I/workspaces/HW3/common/include -I/workspaces/HW3/UserCommon/include -isystem /workspaces/HW3/build/default/vcpkg_installed/x64-linux/include -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Werror -pedantic -o Simulator/CMakeFiles/simulator_207637604_325750099.dir/src/Registrar.cpp.o -c /workspaces/HW3/Simulator/src/Registrar.cpp",
+  "file": "/workspaces/HW3/Simulator/src/Registrar.cpp",
+  "output": "Simulator/CMakeFiles/simulator_207637604_325750099.dir/src/Registrar.cpp.o"
+},
+{
+  "directory": "/workspaces/HW3/build/default",
+  "command": "/usr/bin/c++ -DMP_UNITS_API_CONTRACTS=2 -DMP_UNITS_API_NATURAL_UNITS=1 -DMP_UNITS_API_NO_CRTP=0 -DMP_UNITS_API_STD_FORMAT=0 -DMP_UNITS_API_THROWING_CONSTRAINTS=0 -DMP_UNITS_HOSTED=1 -DYAML_CPP_STATIC_DEFINE -Dsimulator_207637604_325750099_EXPORTS -I/workspaces/HW3/Simulator/include -I/workspaces/HW3/Simulator/common_simulator/include -I/workspaces/HW3/common/include -I/workspaces/HW3/UserCommon/include -isystem /workspaces/HW3/build/default/vcpkg_installed/x64-linux/include -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Werror -pedantic -o Simulator/CMakeFiles/simulator_207637604_325750099.dir/src/Registration.cpp.o -c /workspaces/HW3/Simulator/src/Registration.cpp",
+  "file": "/workspaces/HW3/Simulator/src/Registration.cpp",
+  "output": "Simulator/CMakeFiles/simulator_207637604_325750099.dir/src/Registration.cpp.o"
+},
+{
+  "directory": "/workspaces/HW3/build/default",
+  "command": "/usr/bin/c++ -DMP_UNITS_API_CONTRACTS=2 -DMP_UNITS_API_NATURAL_UNITS=1 -DMP_UNITS_API_NO_CRTP=0 -DMP_UNITS_API_STD_FORMAT=0 -DMP_UNITS_API_THROWING_CONSTRAINTS=0 -DMP_UNITS_HOSTED=1 -DYAML_CPP_STATIC_DEFINE -Dsimulator_207637604_325750099_EXPORTS -I/workspaces/HW3/Simulator/include -I/workspaces/HW3/Simulator/common_simulator/include -I/workspaces/HW3/common/include -I/workspaces/HW3/UserCommon/include -isystem /workspaces/HW3/build/default/vcpkg_installed/x64-linux/include -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Werror -pedantic -o Simulator/CMakeFiles/simulator_207637604_325750099.dir/src/PluginLoader.cpp.o -c /workspaces/HW3/Simulator/src/PluginLoader.cpp",
+  "file": "/workspaces/HW3/Simulator/src/PluginLoader.cpp",
+  "output": "Simulator/CMakeFiles/simulator_207637604_325750099.dir/src/PluginLoader.cpp.o"
+},
+{
+  "directory": "/workspaces/HW3/build/default",
+  "command": "/usr/bin/c++ -DMP_UNITS_API_CONTRACTS=2 -DMP_UNITS_API_NATURAL_UNITS=1 -DMP_UNITS_API_NO_CRTP=0 -DMP_UNITS_API_STD_FORMAT=0 -DMP_UNITS_API_THROWING_CONSTRAINTS=0 -DMP_UNITS_HOSTED=1 -DYAML_CPP_STATIC_DEFINE -Dsimulator_207637604_325750099_EXPORTS -I/workspaces/HW3/Simulator/include -I/workspaces/HW3/Simulator/common_simulator/include -I/workspaces/HW3/common/include -I/workspaces/HW3/UserCommon/include -isystem /workspaces/HW3/build/default/vcpkg_installed/x64-linux/include -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Werror -pedantic -o Simulator/CMakeFiles/simulator_207637604_325750099.dir/src/main.cpp.o -c /workspaces/HW3/Simulator/src/main.cpp",
+  "file": "/workspaces/HW3/Simulator/src/main.cpp",
+  "output": "Simulator/CMakeFiles/simulator_207637604_325750099.dir/src/main.cpp.o"
+}
+]

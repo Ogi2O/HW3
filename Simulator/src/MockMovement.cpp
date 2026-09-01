@@ -4,6 +4,7 @@
 
 #include <algorithm>
 #include <cmath>
+#include <stdexcept>
 
 namespace simulator {
 
@@ -91,7 +92,7 @@ types::MovementResult MockMovement::advance(PhysicalLength distance) {
     };
 
     if (pathBlocked(from, to)) {
-        return types::MovementResult{false, "DRONE_HITS_OBSTACLE"};
+        throw std::runtime_error("DRONE_HITS_OBSTACLE");
     }
     gps_.setPosition(to);
     return types::MovementResult{true, {}};
@@ -103,7 +104,7 @@ types::MovementResult MockMovement::elevate(PhysicalLength distance) {
     const Position3D to{from.x, from.y, from.z + d * z_extent[cm]};
 
     if (pathBlocked(from, to)) {
-        return types::MovementResult{false, "DRONE_HITS_OBSTACLE"};
+        throw std::runtime_error("DRONE_HITS_OBSTACLE");
     }
     gps_.setPosition(to);
     return types::MovementResult{true, {}};
