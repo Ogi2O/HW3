@@ -29,6 +29,7 @@ public:
     // Comparative report: groups mission controls that produced identical
     // results under `same_results`, groups sorted by how many agree (desc).
     // Written to output_path/comparative_results.yaml.
+    // Also writes per-plugin result files: output_path/simulation_output_<plugin>.yaml
     static void writeComparativeReport(const std::vector<ModeRunResult>& entries,
                                        const std::vector<std::string>& failed_plugins,
                                        const std::filesystem::path& composition_file,
@@ -37,11 +38,17 @@ public:
 
     // Competitive report: algorithms ranked by score (desc) then steps (asc).
     // Written to output_path/competition_results.yaml.
+    // Also writes per-plugin result files: output_path/simulation_output_<plugin>.yaml
     static void writeCompetitiveReport(const std::vector<ModeRunResult>& entries,
                                        const std::vector<std::string>& failed_plugins,
                                        const std::filesystem::path& composition_file,
                                        const std::filesystem::path& mission_control,
                                        const std::filesystem::path& output_path);
+
+private:
+    // Write a per-plugin result YAML file (assignment-2 style format).
+    static void writePluginReport(const ModeRunResult& entry,
+                                  const std::filesystem::path& output_path);
 };
 
 } // namespace simulator
